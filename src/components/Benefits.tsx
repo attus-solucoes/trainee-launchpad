@@ -41,7 +41,7 @@ const Benefits = () => {
               className={`glass-card rounded-2xl p-7 flex flex-col items-start gap-4 group hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_0_30px_hsla(272,89%,43%,0.15)] transition-all duration-300 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               style={{ transitionDelay: `${100 + i * 80}ms` }}
             >
-              <div className="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center text-accent group-hover:scale-110 group-hover:text-accent transition-all duration-300">
+              <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent group-hover:scale-110 group-hover:drop-shadow-[0_0_12px_hsla(153,100%,50%,0.4)] transition-all duration-300">
                 {b.icon}
               </div>
               <h3 className="font-sora text-lg font-semibold text-foreground">{b.title}</h3>

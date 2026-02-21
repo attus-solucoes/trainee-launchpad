@@ -4,7 +4,7 @@ const Hero = () => {
   return (
     <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden mesh-gradient">
       {/* Glow orb */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/20 blur-[150px] animate-pulse-glow pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/30 blur-[180px] animate-pulse-glow pointer-events-none" />
       
       {/* Dots grid */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
