@@ -24,10 +24,11 @@ const Requirements = () => {
   }, []);
 
   return (
-    <section id="requisitos" className="py-24 md:py-32" ref={ref}>
+    <section id="requisitos" className="py-24 md:py-32" ref={ref} aria-labelledby="requisitos-heading">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h2
+            id="requisitos-heading"
             className={`font-sora text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
             Quem estamos buscando

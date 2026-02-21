@@ -2,11 +2,9 @@ import { ChevronDown, Clock, ArrowRight } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden mesh-gradient">
-      {/* Glow orb */}
+    <section id="hero" aria-label="Início" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden mesh-gradient">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/30 blur-[180px] animate-pulse-glow pointer-events-none" />
 
-      {/* Dots grid */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
         style={{
           backgroundImage: "radial-gradient(circle, hsl(270 20% 95%) 1px, transparent 1px)",
@@ -43,7 +41,7 @@ const Hero = () => {
             href="#inscricao"
             data-track="cta-click"
             data-track-location="hero"
-            className="group inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-accent text-accent-foreground font-dm font-semibold text-base hover:shadow-[0_0_25px_hsla(153,100%,50%,0.4)] transition-all glow-neon"
+            className="group inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-accent text-accent-foreground font-dm font-semibold text-base hover:shadow-[0_0_25px_hsla(153,100%,50%,0.4)] transition-all glow-neon min-h-[44px]"
             aria-label="Quero me inscrever no Programa Trainee Nubank 2026"
           >
             Quero me inscrever
@@ -51,7 +49,9 @@ const Hero = () => {
           </a>
           <a
             href="#programa"
-            className="inline-flex items-center px-8 py-3.5 rounded-full border border-foreground/20 text-foreground font-dm font-medium text-base hover:border-foreground/40 transition-colors"
+            data-track="cta-click"
+            data-track-location="hero-secondary"
+            className="inline-flex items-center px-8 py-3.5 rounded-full border border-foreground/20 text-foreground font-dm font-medium text-base hover:border-foreground/40 transition-colors min-h-[44px]"
             aria-label="Conhecer o programa"
           >
             Conhecer o programa

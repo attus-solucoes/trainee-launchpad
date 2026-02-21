@@ -20,7 +20,7 @@
     --secondary-foreground: 270 20% 95%;
 
     --muted: 270 30% 12%;
-    --muted-foreground: 270 15% 75%;
+    --muted-foreground: 270 15% 78%;
 
     --accent: 153 100% 50%;
     --accent-foreground: 270 100% 4%;
@@ -177,5 +177,24 @@ h1, h2, h3, h4, h5, h6 {
   .animate-shimmer {
     background-size: 200% auto;
     animation: shimmer 3s linear infinite;
+  }
+}
+
+/* Performance hints */
+.glass-card {
+  will-change: transform;
+}
+
+.animate-pulse-glow {
+  will-change: transform, opacity;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

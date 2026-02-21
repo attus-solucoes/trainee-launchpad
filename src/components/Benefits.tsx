@@ -43,9 +43,10 @@ const Benefits = () => {
   }, []);
 
   return (
-    <section id="beneficios" className="py-24 md:py-32" ref={ref}>
+    <section id="beneficios" className="py-24 md:py-32" ref={ref} aria-labelledby="beneficios-heading">
       <div className="container mx-auto px-4 lg:px-8">
         <h2
+          id="beneficios-heading"
           className={`font-sora text-3xl md:text-4xl lg:text-5xl font-bold text-foreground text-center mb-16 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           O que você vai encontrar aqui
