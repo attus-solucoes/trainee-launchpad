@@ -1,6 +1,10 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import MetricsBar from "@/components/MetricsBar";
+import AboutProgram from "@/components/AboutProgram";
+import AboutNubank from "@/components/AboutNubank";
+import Requirements from "@/components/Requirements";
+import Benefits from "@/components/Benefits";
 
 const Index = () => {
   return (
@@ -9,11 +13,10 @@ const Index = () => {
       <main>
         <Hero />
         <MetricsBar />
-        {/* Placeholder sections for anchor links */}
-        <section id="programa" className="min-h-[50vh] container mx-auto px-4 py-24">
-          <h2 className="font-sora text-3xl md:text-4xl font-bold text-foreground text-center">O Programa</h2>
-          <p className="font-dm text-muted-foreground text-center mt-4 max-w-xl mx-auto">Em breve, mais detalhes sobre o Programa Trainee Nubank 2026.</p>
-        </section>
+        <AboutProgram />
+        <AboutNubank />
+        <Requirements />
+        <Benefits />
       </main>
     </div>
   );
