@@ -59,7 +59,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce-slow">
+      <div className="absolute bottom-24 md:bottom-28 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 animate-bounce-slow">
         <span className="text-xs font-dm text-muted-foreground">Scroll</span>
         <ChevronDown size={20} className="text-muted-foreground" />
       </div>
