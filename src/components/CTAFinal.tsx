@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
+import { trackEvent } from "@/utils/analytics";
 
 const TARGET_DATE = new Date("2026-03-30T23:59:59-03:00").getTime();
 
@@ -80,6 +81,7 @@ const CTAFinal = () => {
             href="#"
             data-track="cta-click"
             data-track-location="cta-final"
+            onClick={() => trackEvent('cta_click', { location: 'cta_final' })}
             className="group inline-flex items-center gap-2 px-10 py-4 rounded-full bg-accent text-accent-foreground font-sora font-bold text-lg hover:scale-105 hover:shadow-[0_0_30px_hsla(153,100%,50%,0.5)] transition-all duration-300 min-h-[44px]"
           >
             Fazer minha inscrição

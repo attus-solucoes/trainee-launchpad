@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Menu, X } from "lucide-react";
+import { trackEvent } from "@/utils/analytics";
 
 const navLinks = [
   { label: "O Programa", href: "#programa", item: "programa" },
@@ -90,6 +91,7 @@ const Navbar = () => {
           href="#inscricao"
           data-track="cta-click"
           data-track-location="navbar"
+          onClick={() => trackEvent('cta_click', { location: 'navbar' })}
           className="hidden lg:inline-flex items-center px-6 py-2.5 rounded-full bg-accent text-accent-foreground font-dm font-semibold text-sm hover:opacity-90 hover:shadow-[0_0_20px_hsla(153,100%,50%,0.4)] transition-all glow-neon"
         >
           Inscreva-se
@@ -132,7 +134,7 @@ const Navbar = () => {
           ))}
           <a
             href="#inscricao"
-            onClick={() => setMobileOpen(false)}
+            onClick={() => { trackEvent('cta_click', { location: 'navbar' }); setMobileOpen(false); }}
             data-track="cta-click"
             data-track-location="navbar-mobile"
             className="mt-4 inline-flex items-center px-8 py-3 rounded-full bg-accent text-accent-foreground font-dm font-semibold text-base glow-neon min-h-[44px]"

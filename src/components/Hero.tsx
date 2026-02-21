@@ -1,6 +1,7 @@
 import { ChevronDown, Clock, ArrowRight } from "lucide-react";
 import nubankLogo from "@/assets/nubank-logo.svg";
 import HeroWave from "./HeroWave";
+import { trackEvent } from "@/utils/analytics";
 
 const Hero = () => {
   return (
@@ -67,6 +68,7 @@ const Hero = () => {
             href="#inscricao"
             data-track="cta-click"
             data-track-location="hero"
+            onClick={() => trackEvent('cta_click', { location: 'hero' })}
             className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-3.5 rounded-full bg-accent text-accent-foreground font-dm font-semibold text-base hover:shadow-[0_0_25px_hsla(153,100%,50%,0.4)] transition-all glow-neon min-h-[44px]"
             aria-label="Quero me inscrever no Programa Trainee Nubank 2026"
           >
