@@ -26,7 +26,13 @@ const ScrollProgress = () => {
       style={{
         width: `${progress}%`,
         background: "linear-gradient(90deg, hsl(var(--accent)), hsl(var(--primary)))",
+        willChange: "width",
       }}
+      role="progressbar"
+      aria-valuenow={Math.round(progress)}
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-label="Progresso de leitura da página"
     />
   );
 };

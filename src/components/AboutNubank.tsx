@@ -24,12 +24,12 @@ const AboutNubank = () => {
   }, []);
 
   return (
-    <section id="nubank" className="py-24 md:py-32" ref={ref}>
+    <section id="nubank" className="py-24 md:py-32" ref={ref} aria-labelledby="nubank-heading">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Text */}
           <div>
             <h2
+              id="nubank-heading"
               className={`font-sora text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
             >
               Conheça o Nubank

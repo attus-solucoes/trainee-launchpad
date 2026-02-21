@@ -2,15 +2,15 @@ import { useState, useEffect, useCallback } from "react";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "O Programa", href: "#programa" },
-  { label: "Nubank", href: "#nubank" },
-  { label: "Etapas", href: "#etapas" },
-  { label: "Benefícios", href: "#beneficios" },
-  { label: "Depoimentos", href: "#depoimentos" },
-  { label: "FAQ", href: "#faq" },
+  { label: "O Programa", href: "#programa", item: "programa" },
+  { label: "Nubank", href: "#nubank", item: "nubank" },
+  { label: "Etapas", href: "#etapas", item: "etapas" },
+  { label: "Benefícios", href: "#beneficios", item: "beneficios" },
+  { label: "Depoimentos", href: "#depoimentos", item: "depoimentos" },
+  { label: "FAQ", href: "#faq", item: "faq" },
 ];
 
-const sectionIds = navLinks.map((l) => l.href.slice(1));
+const sectionIds = navLinks.map((l) => l.item);
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -23,7 +23,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Intersection Observer for active section
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
     const visibleSections = new Map<string, number>();
@@ -38,7 +37,6 @@ const Navbar = () => {
           } else {
             visibleSections.delete(id);
           }
-          // Pick the one with highest ratio
           let best = "";
           let bestRatio = 0;
           visibleSections.forEach((ratio, sid) => {
@@ -62,6 +60,7 @@ const Navbar = () => {
 
   return (
     <nav
+      aria-label="Navegação principal"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? "glass py-3 shadow-[0_4px_30px_rgba(0,0,0,0.3)]" : "py-5 bg-transparent"
       }`}
@@ -71,14 +70,15 @@ const Navbar = () => {
           eureca<span className="text-accent">.</span>
         </a>
 
-        {/* Desktop nav */}
         <div className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
+              data-track="nav-click"
+              data-track-item={link.item}
               className={`text-sm font-dm transition-colors duration-200 ${
-                activeSection === link.href.slice(1) ? "text-accent" : "text-muted-foreground hover:text-foreground"
+                activeSection === link.item ? "text-accent" : "text-muted-foreground hover:text-foreground"
               }`}
             >
               {link.label}
@@ -97,14 +97,13 @@ const Navbar = () => {
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden text-foreground p-2"
+          className="lg:hidden text-foreground p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
           aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile drawer */}
       <div
         className={`fixed inset-0 top-0 z-40 lg:hidden transition-all duration-300 ${
           mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
@@ -121,8 +120,10 @@ const Navbar = () => {
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
+              data-track="nav-click"
+              data-track-item={link.item}
               className={`font-sora text-2xl font-semibold transition-colors ${
-                activeSection === link.href.slice(1) ? "text-accent" : "text-foreground hover:text-accent"
+                activeSection === link.item ? "text-accent" : "text-foreground hover:text-accent"
               }`}
               style={{ animationDelay: `${i * 60}ms` }}
             >
@@ -134,7 +135,7 @@ const Navbar = () => {
             onClick={() => setMobileOpen(false)}
             data-track="cta-click"
             data-track-location="navbar-mobile"
-            className="mt-4 inline-flex items-center px-8 py-3 rounded-full bg-accent text-accent-foreground font-dm font-semibold text-base glow-neon"
+            className="mt-4 inline-flex items-center px-8 py-3 rounded-full bg-accent text-accent-foreground font-dm font-semibold text-base glow-neon min-h-[44px]"
           >
             Inscreva-se
           </a>
