@@ -12,6 +12,7 @@ import FAQ from "@/components/FAQ";
 import CTAFinal from "@/components/CTAFinal";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import BackgroundShapes from "@/components/BackgroundShapes";
 
 const Divider = () => <div className="section-divider" />;
 const ScrollDepth = ({ depth }: { depth: string }) => (
@@ -20,7 +21,7 @@ const ScrollDepth = ({ depth }: { depth: string }) => (
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
       {/* Skip to content */}
       <a
         href="#programa"
@@ -29,9 +30,10 @@ const Index = () => {
         Pular para o conteúdo principal
       </a>
 
+      <BackgroundShapes />
       <ScrollProgress />
       <Navbar />
-      <main>
+      <main className="relative z-[1]">
         <Hero />
         <MetricsBar />
         <Divider />

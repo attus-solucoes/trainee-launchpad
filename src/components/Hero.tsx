@@ -1,4 +1,6 @@
 import { ChevronDown, Clock, ArrowRight } from "lucide-react";
+import NuLogo from "./NuLogo";
+import HeroWave from "./HeroWave";
 
 const Hero = () => {
   return (
@@ -13,7 +15,27 @@ const Hero = () => {
       />
 
       <div className="relative z-10 container mx-auto px-5 lg:px-8 text-center flex flex-col items-center pt-20 md:pt-24 pb-16">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-muted/30 backdrop-blur-sm mb-5 md:mb-8 animate-fade-up">
+        {/* NuLogo */}
+        <div className="mb-6 animate-fade-up">
+          <NuLogo size="md" glow className="md:hidden" />
+          <NuLogo size="lg" glow className="hidden md:inline-flex" />
+        </div>
+
+        {/* Co-branding badge */}
+        <div
+          className="inline-flex items-center gap-2 md:gap-3 px-4 py-2 md:px-5 md:py-2.5 rounded-full glass-card mb-4 md:mb-5 animate-fade-up"
+          style={{ animationDelay: "0.05s", animationFillMode: "both", border: "1px solid hsla(272, 89%, 43%, 0.2)" }}
+        >
+          <span className="font-sora font-bold text-foreground text-xs md:text-sm">Nubank</span>
+          <span className="text-muted-foreground text-[10px] md:text-xs">×</span>
+          <span className="font-sora font-bold text-xs md:text-sm">
+            <span className="text-foreground">eureca</span>
+            <span className="text-accent">.</span>
+          </span>
+        </div>
+
+        {/* Inscrições badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-muted/30 backdrop-blur-sm mb-5 md:mb-6 animate-fade-up" style={{ animationDelay: "0.1s", animationFillMode: "both" }}>
           <Clock size={14} className="text-accent" />
           <span className="text-xs font-dm font-medium text-muted-foreground">
             Inscrições abertas até 30 de março de 2026
@@ -22,7 +44,7 @@ const Hero = () => {
 
         <h1
           className="font-sora font-extrabold text-gradient-hero leading-[1.1] mb-6 animate-fade-up"
-          style={{ fontSize: "clamp(1.85rem, 8vw, 2.5rem)", animationDelay: "0.1s", animationFillMode: "both" }}
+          style={{ fontSize: "clamp(1.85rem, 8vw, 2.5rem)", animationDelay: "0.15s", animationFillMode: "both" }}
         >
           <span className="md:hidden">Construa o futuro da<br />tecnologia financeira</span>
           <span className="hidden md:inline" style={{ fontSize: "clamp(2.25rem, 6vw, 4.5rem)" }}>Construa o futuro da<br />tecnologia financeira</span>
@@ -30,12 +52,12 @@ const Hero = () => {
 
         <p
           className="font-dm text-muted-foreground max-w-2xl text-sm md:text-lg leading-relaxed mb-7 md:mb-10 animate-fade-up"
-          style={{ animationDelay: "0.2s", animationFillMode: "both" }}
+          style={{ animationDelay: "0.25s", animationFillMode: "both" }}
         >
           O Programa Trainee Nubank 2026 é a sua porta de entrada para transformar a vida de milhões de pessoas. 18 meses de desenvolvimento acelerado nas áreas que estão reinventando o mercado financeiro.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto animate-fade-up" style={{ animationDelay: "0.3s", animationFillMode: "both" }}>
+        <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto animate-fade-up" style={{ animationDelay: "0.35s", animationFillMode: "both" }}>
           <a
             href="#inscricao"
             data-track="cta-click"
@@ -62,6 +84,8 @@ const Hero = () => {
         <span className="text-xs font-dm text-muted-foreground">Scroll</span>
         <ChevronDown size={20} className="text-muted-foreground" />
       </div>
+
+      <HeroWave />
     </section>
   );
 };

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Check } from "lucide-react";
+import NuLogo from "./NuLogo";
 
 const values = [
   "Pensamos e agimos como donos",
@@ -28,12 +29,19 @@ const AboutNubank = () => {
       <div className="container mx-auto px-5 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
-            <h2
-              id="nubank-heading"
-              className={`font-sora text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+            {/* Heading with NuLogo */}
+            <div
+              className={`flex flex-col md:flex-row items-center md:items-center gap-3 md:gap-4 mb-6 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
             >
-              Conheça o Nubank
-            </h2>
+              <NuLogo size="sm" className="md:hidden" />
+              <NuLogo size="md" className="hidden md:inline-flex" />
+              <h2
+                id="nubank-heading"
+                className="font-sora text-3xl md:text-4xl lg:text-5xl font-bold text-foreground text-center md:text-left"
+              >
+                Conheça o Nubank
+              </h2>
+            </div>
             <p
               className={`font-dm text-muted-foreground text-base md:text-lg leading-relaxed mb-8 transition-all duration-700 delay-100 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
             >
