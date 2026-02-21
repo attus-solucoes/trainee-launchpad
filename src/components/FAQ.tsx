@@ -33,9 +33,9 @@ const FAQ = () => {
   }, []);
 
   return (
-    <section id="faq" className="py-24 md:py-32" ref={ref} aria-labelledby="faq-heading">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
+    <section id="faq" className="py-16 md:py-24 lg:py-32" ref={ref} aria-labelledby="faq-heading">
+      <div className="container mx-auto px-5 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-8 md:mb-12 lg:mb-16">
           <h2 id="faq-heading" className={`font-sora text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             Perguntas frequentes
           </h2>
@@ -49,7 +49,7 @@ const FAQ = () => {
             {faqs.map((faq, i) => (
               <AccordionItem key={i} value={`item-${i}`} className="border-b border-border hover:bg-primary/5 transition-colors">
                 <AccordionTrigger
-                  className="font-sora font-medium text-foreground text-base md:text-lg py-5 hover:no-underline"
+                  className="font-sora font-medium text-foreground text-sm md:text-lg py-5 hover:no-underline"
                   data-track="faq-open"
                   data-track-question={faq.slug}
                 >
