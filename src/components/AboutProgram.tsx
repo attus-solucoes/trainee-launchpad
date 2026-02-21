@@ -52,9 +52,9 @@ const AboutProgram = () => {
   }, []);
 
   return (
-    <section id="programa" className="py-24 md:py-32" ref={ref} aria-labelledby="programa-heading">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
+    <section id="programa" className="py-16 md:py-24 lg:py-32" ref={ref} aria-labelledby="programa-heading">
+      <div className="container mx-auto px-5 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-8 md:mb-12 lg:mb-16">
           <h2
             id="programa-heading"
             className={`font-sora text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
@@ -68,11 +68,11 @@ const AboutProgram = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid md:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
           {cards.map((card, i) => (
             <div
               key={card.title}
-              className={`glass-card rounded-2xl p-8 flex flex-col items-start gap-4 hover:border-primary/40 hover:shadow-[0_0_30px_hsla(272,89%,43%,0.15)] transition-all duration-300 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              className={`glass-card rounded-2xl p-5 md:p-8 flex flex-col items-start gap-4 hover:border-primary/40 hover:shadow-[0_0_30px_hsla(272,89%,43%,0.15)] transition-all duration-300 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               style={{ transitionDelay: `${150 + i * 100}ms`, willChange: "transform" }}
               onMouseMove={tilt.onMouseMove}
               onMouseLeave={tilt.onMouseLeave}

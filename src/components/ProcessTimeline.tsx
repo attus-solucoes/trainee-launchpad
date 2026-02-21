@@ -82,9 +82,9 @@ const ProcessTimeline = () => {
   }, []);
 
   return (
-    <section id="etapas" className="py-24 md:py-32" ref={ref} aria-labelledby="etapas-heading">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-20">
+    <section id="etapas" className="py-16 md:py-24 lg:py-32" ref={ref} aria-labelledby="etapas-heading">
+      <div className="container mx-auto px-5 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-10 md:mb-16 lg:mb-20">
           <h2
             id="etapas-heading"
             className={`font-sora text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 transition-all duration-700 ${visibleSteps.size > 0 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
@@ -117,7 +117,7 @@ const ProcessTimeline = () => {
               <div
                 key={i}
                 data-step={i}
-                className={`relative flex items-start mb-12 last:mb-0 md:mb-16 ${isLeft ? "md:flex-row" : "md:flex-row-reverse"}`}
+                className={`relative flex items-start mb-8 last:mb-0 md:mb-16 ${isLeft ? "md:flex-row" : "md:flex-row-reverse"}`}
                 style={{ transitionDelay: `${i * 150}ms` }}
               >
                 {/* Circle on timeline */}

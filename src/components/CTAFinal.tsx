@@ -47,15 +47,15 @@ const CTAFinal = () => {
     <section
       id="inscricao"
       aria-labelledby="cta-heading"
-      className="relative py-28 md:py-36 overflow-hidden"
+      className="relative py-20 md:py-28 lg:py-36 overflow-hidden"
       style={{
         background: "radial-gradient(ellipse 80% 60% at 50% 50%, hsla(272, 89%, 43%, 0.5) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 85% 30%, hsla(153, 100%, 50%, 0.12) 0%, transparent 60%), hsl(var(--background))",
       }}
     >
       <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--accent)), transparent)" }} />
 
-      <div className="container mx-auto px-4 lg:px-8 text-center relative z-10">
-        <h2 id="cta-heading" className={`font-sora text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+      <div className="container mx-auto px-5 lg:px-8 text-center relative z-10">
+        <h2 id="cta-heading" className={`font-sora text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           Sua carreira extraordinária começa com um clique
         </h2>
         <p className={`font-dm text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mb-12 transition-all duration-700 delay-100 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>

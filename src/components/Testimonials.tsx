@@ -49,9 +49,9 @@ const Testimonials = () => {
   const t = testimonials[active];
 
   return (
-    <section id="depoimentos" className="py-24 md:py-32" ref={ref} aria-labelledby="depoimentos-heading">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
+    <section id="depoimentos" className="py-16 md:py-24 lg:py-32" ref={ref} aria-labelledby="depoimentos-heading">
+      <div className="container mx-auto px-5 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-8 md:mb-12 lg:mb-16">
           <h2 id="depoimentos-heading" className={`font-sora text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             Quem já viveu, recomenda
           </h2>
@@ -70,13 +70,13 @@ const Testimonials = () => {
           aria-roledescription="carousel"
           tabIndex={0}
         >
-          <div className={`glass-card rounded-2xl p-8 md:p-10 relative min-h-[320px] flex flex-col justify-between transition-opacity duration-300 ${fade ? "opacity-100" : "opacity-0"}`}>
+          <div className={`glass-card rounded-2xl p-6 md:p-10 relative min-h-[280px] md:min-h-[320px] flex flex-col justify-between transition-opacity duration-300 ${fade ? "opacity-100" : "opacity-0"}`}>
             <span className="absolute top-4 left-6 font-sora text-[5rem] leading-none text-accent/15 select-none pointer-events-none" aria-hidden="true">"</span>
             <div className="relative z-10">
-              <p className="font-dm text-lg md:text-xl text-foreground leading-relaxed italic mb-6 pt-8">"{t.quote}"</p>
+              <p className="font-dm text-base md:text-xl text-foreground leading-relaxed italic mb-6 pt-8">"{t.quote}"</p>
               <div className="w-full h-px bg-accent/20 mb-6" />
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-full flex items-center justify-center font-sora font-bold text-primary-foreground text-lg flex-shrink-0" style={{ background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)))" }}>
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center font-sora font-bold text-primary-foreground text-base md:text-lg flex-shrink-0" style={{ background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)))" }}>
                   {t.initials}
                 </div>
                 <div>
@@ -88,19 +88,27 @@ const Testimonials = () => {
             </div>
           </div>
 
-          <button onClick={prev} data-track="testimonial-nav" data-track-direction="prev" className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 md:-translate-x-full md:-left-4 w-12 h-12 rounded-full glass-card flex items-center justify-center text-foreground hover:shadow-[0_0_15px_hsla(153,100%,50%,0.3)] transition-shadow min-w-[44px] min-h-[44px]" aria-label="Depoimento anterior">
+          {/* Navigation arrows — hidden on mobile, shown on md+ */}
+          <button onClick={prev} data-track="testimonial-nav" data-track-direction="prev" className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-full -left-4 w-12 h-12 rounded-full glass-card items-center justify-center text-foreground hover:shadow-[0_0_15px_hsla(153,100%,50%,0.3)] transition-shadow min-w-[44px] min-h-[44px]" aria-label="Depoimento anterior">
             <ChevronLeft size={20} />
           </button>
-          <button onClick={next} data-track="testimonial-nav" data-track-direction="next" className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 md:translate-x-full md:-right-4 w-12 h-12 rounded-full glass-card flex items-center justify-center text-foreground hover:shadow-[0_0_15px_hsla(153,100%,50%,0.3)] transition-shadow min-w-[44px] min-h-[44px]" aria-label="Próximo depoimento">
+          <button onClick={next} data-track="testimonial-nav" data-track-direction="next" className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-full -right-4 w-12 h-12 rounded-full glass-card items-center justify-center text-foreground hover:shadow-[0_0_15px_hsla(153,100%,50%,0.3)] transition-shadow min-w-[44px] min-h-[44px]" aria-label="Próximo depoimento">
             <ChevronRight size={20} />
           </button>
 
-          <div className="flex items-center justify-center gap-2 mt-8">
+          {/* Mobile: arrows + dots in a row; Desktop: dots only */}
+          <div className="flex items-center justify-center gap-2 mt-6 md:mt-8">
+            <button onClick={prev} className="md:hidden w-9 h-9 rounded-full glass-card flex items-center justify-center text-foreground min-w-[44px] min-h-[44px]" aria-label="Depoimento anterior">
+              <ChevronLeft size={18} />
+            </button>
             {testimonials.map((_, i) => (
-              <button key={i} onClick={() => changeTo(i)} data-track="testimonial-dot" data-track-index={i} className={`w-2.5 h-2.5 rounded-full transition-all duration-300 min-w-[44px] min-h-[44px] flex items-center justify-center ${i === active ? "" : ""}`} aria-label={`Depoimento ${i + 1}`}>
+              <button key={i} onClick={() => changeTo(i)} data-track="testimonial-dot" data-track-index={i} className="w-2.5 h-2.5 rounded-full transition-all duration-300 min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label={`Depoimento ${i + 1}`}>
                 <span className={`block rounded-full transition-all duration-300 ${i === active ? "bg-accent w-6 h-2.5" : "bg-muted-foreground/30 w-2.5 h-2.5"}`} />
               </button>
             ))}
+            <button onClick={next} className="md:hidden w-9 h-9 rounded-full glass-card flex items-center justify-center text-foreground min-w-[44px] min-h-[44px]" aria-label="Próximo depoimento">
+              <ChevronRight size={18} />
+            </button>
           </div>
         </div>
       </div>

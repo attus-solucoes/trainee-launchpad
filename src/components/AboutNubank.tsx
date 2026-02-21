@@ -24,8 +24,8 @@ const AboutNubank = () => {
   }, []);
 
   return (
-    <section id="nubank" className="py-24 md:py-32" ref={ref} aria-labelledby="nubank-heading">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section id="nubank" className="py-16 md:py-24 lg:py-32" ref={ref} aria-labelledby="nubank-heading">
+      <div className="container mx-auto px-5 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
             <h2
@@ -55,9 +55,9 @@ const AboutNubank = () => {
             </ul>
           </div>
 
-          {/* Visual card — CSS-only "app" mockup */}
+          {/* Visual card — CSS-only "app" mockup — hidden on mobile */}
           <div
-            className={`flex justify-center transition-all duration-700 delay-300 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+            className={`hidden md:flex justify-center transition-all duration-700 delay-300 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
             <div className="relative w-[280px] h-[480px] rounded-[2.5rem] bg-gradient-to-b from-primary/80 to-secondary overflow-hidden border border-border/40 shadow-[0_0_60px_hsla(272,89%,43%,0.25)] animate-float">
               {/* Status bar */}

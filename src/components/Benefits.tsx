@@ -43,29 +43,29 @@ const Benefits = () => {
   }, []);
 
   return (
-    <section id="beneficios" className="py-24 md:py-32" ref={ref} aria-labelledby="beneficios-heading">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section id="beneficios" className="py-16 md:py-24 lg:py-32" ref={ref} aria-labelledby="beneficios-heading">
+      <div className="container mx-auto px-5 lg:px-8">
         <h2
           id="beneficios-heading"
-          className={`font-sora text-3xl md:text-4xl lg:text-5xl font-bold text-foreground text-center mb-16 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          className={`font-sora text-3xl md:text-4xl lg:text-5xl font-bold text-foreground text-center mb-8 md:mb-12 lg:mb-16 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           O que você vai encontrar aqui
         </h2>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
           {benefits.map((b, i) => (
             <div
               key={b.title}
-              className={`glass-card rounded-2xl p-7 flex flex-col items-start gap-4 group hover:border-primary/40 hover:shadow-[0_0_30px_hsla(272,89%,43%,0.15)] transition-all duration-300 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              className={`glass-card rounded-2xl p-4 md:p-7 flex flex-col items-start gap-3 md:gap-4 group hover:border-primary/40 hover:shadow-[0_0_30px_hsla(272,89%,43%,0.15)] transition-all duration-300 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               style={{ transitionDelay: `${100 + i * 80}ms`, willChange: "transform" }}
               onMouseMove={tilt.onMouseMove}
               onMouseLeave={tilt.onMouseLeave}
             >
-              <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent group-hover:scale-110 group-hover:drop-shadow-[0_0_12px_hsla(153,100%,50%,0.4)] transition-all duration-300">
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent group-hover:scale-110 group-hover:drop-shadow-[0_0_12px_hsla(153,100%,50%,0.4)] transition-all duration-300">
                 {b.icon}
               </div>
-              <h3 className="font-sora text-lg font-semibold text-foreground">{b.title}</h3>
-              <p className="font-dm text-muted-foreground text-sm leading-relaxed">{b.desc}</p>
+              <h3 className="font-sora text-sm md:text-lg font-semibold text-foreground">{b.title}</h3>
+              <p className="font-dm text-muted-foreground text-xs md:text-sm leading-relaxed">{b.desc}</p>
             </div>
           ))}
         </div>
