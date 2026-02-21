@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Check } from "lucide-react";
-import NuLogo from "./NuLogo";
+import nubankLogo from "@/assets/nubank-logo.svg";
 
 const values = [
   "Pensamos e agimos como donos",
@@ -25,16 +25,28 @@ const AboutNubank = () => {
   }, []);
 
   return (
-    <section id="nubank" className="py-16 md:py-24 lg:py-32" ref={ref} aria-labelledby="nubank-heading">
+    <section id="nubank" className="py-16 md:py-24 lg:py-32 relative" ref={ref} aria-labelledby="nubank-heading">
+      {/* Decorative blob */}
+      <div
+        className="absolute -right-[50px] md:-right-[100px] top-0 w-[200px] h-[200px] md:w-[400px] md:h-[400px] rounded-full pointer-events-none animate-float"
+        style={{ background: "radial-gradient(circle, hsla(272, 89%, 43%, 0.06), transparent 70%)", filter: "blur(80px)" }}
+        aria-hidden="true"
+      />
+
       <div className="container mx-auto px-5 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
-            {/* Heading with NuLogo */}
+            {/* Heading with logo */}
             <div
-              className={`flex flex-col md:flex-row items-center md:items-center gap-3 md:gap-4 mb-6 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              className={`flex flex-col md:flex-row items-center md:items-center gap-2 md:gap-4 mb-6 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
             >
-              <NuLogo size="sm" className="md:hidden" />
-              <NuLogo size="md" className="hidden md:inline-flex" />
+              <img
+                src={nubankLogo}
+                alt="Nubank"
+                loading="lazy"
+                className="w-[40px] md:w-[50px] h-auto"
+                style={{ filter: "drop-shadow(0 0 20px rgba(130, 10, 209, 0.4))" }}
+              />
               <h2
                 id="nubank-heading"
                 className="font-sora text-3xl md:text-4xl lg:text-5xl font-bold text-foreground text-center md:text-left"
@@ -68,7 +80,6 @@ const AboutNubank = () => {
             className={`hidden md:flex justify-center transition-all duration-700 delay-300 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
             <div className="relative w-[280px] h-[480px] rounded-[2.5rem] bg-gradient-to-b from-primary/80 to-secondary overflow-hidden border border-border/40 shadow-[0_0_60px_hsla(272,89%,43%,0.25)] animate-float">
-              {/* Status bar */}
               <div className="flex items-center justify-between px-6 pt-5 pb-3">
                 <span className="text-[10px] font-dm text-primary-foreground/60">09:41</span>
                 <div className="w-16 h-5 rounded-full bg-primary-foreground/10" />
@@ -77,14 +88,10 @@ const AboutNubank = () => {
                   <div className="w-3 h-3 rounded-full bg-primary-foreground/20" />
                 </div>
               </div>
-
-              {/* Card balance */}
               <div className="mx-5 mt-4 p-4 rounded-2xl bg-primary-foreground/10 backdrop-blur-sm">
                 <span className="text-[10px] font-dm text-primary-foreground/50 uppercase tracking-wider">Conta</span>
                 <div className="font-sora text-2xl font-bold text-primary-foreground mt-1">R$ ••••</div>
               </div>
-
-              {/* Quick actions row */}
               <div className="flex gap-3 mx-5 mt-5">
                 {[1, 2, 3, 4].map((n) => (
                   <div key={n} className="flex-1 h-14 rounded-xl bg-primary-foreground/8 border border-primary-foreground/5 flex items-center justify-center">
@@ -92,8 +99,6 @@ const AboutNubank = () => {
                   </div>
                 ))}
               </div>
-
-              {/* List items */}
               <div className="mx-5 mt-6 space-y-3">
                 {[1, 2, 3].map((n) => (
                   <div key={n} className="flex items-center gap-3">
@@ -105,8 +110,6 @@ const AboutNubank = () => {
                   </div>
                 ))}
               </div>
-
-              {/* Bottom nav */}
               <div className="absolute bottom-0 inset-x-0 h-16 border-t border-primary-foreground/10 flex items-center justify-around px-6">
                 {[1, 2, 3, 4].map((n) => (
                   <div key={n} className={`w-5 h-5 rounded-full ${n === 1 ? "bg-accent/50" : "bg-primary-foreground/15"}`} />

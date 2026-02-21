@@ -1,5 +1,5 @@
 import { ChevronDown, Clock, ArrowRight } from "lucide-react";
-import NuLogo from "./NuLogo";
+import nubankLogo from "@/assets/nubank-logo.svg";
 import HeroWave from "./HeroWave";
 
 const Hero = () => {
@@ -15,19 +15,24 @@ const Hero = () => {
       />
 
       <div className="relative z-10 container mx-auto px-5 lg:px-8 text-center flex flex-col items-center pt-20 md:pt-24 pb-16">
-        {/* NuLogo */}
-        <div className="mb-6 animate-fade-up">
-          <NuLogo size="md" glow className="md:hidden" />
-          <NuLogo size="lg" glow className="hidden md:inline-flex" />
+        {/* Nubank Logo */}
+        <div className="mb-4 md:mb-6 animate-fade-up">
+          <img
+            src={nubankLogo}
+            alt="Nubank"
+            loading="eager"
+            className="w-[80px] md:w-[120px] h-auto"
+            style={{ filter: "drop-shadow(0 0 30px rgba(130, 10, 209, 0.5))" }}
+          />
         </div>
 
         {/* Co-branding badge */}
         <div
-          className="inline-flex items-center gap-2 md:gap-3 px-4 py-2 md:px-5 md:py-2.5 rounded-full glass-card mb-4 md:mb-5 animate-fade-up"
+          className="inline-flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 rounded-full glass-card mb-4 animate-fade-up"
           style={{ animationDelay: "0.05s", animationFillMode: "both", border: "1px solid hsla(272, 89%, 43%, 0.2)" }}
         >
           <span className="font-sora font-bold text-foreground text-xs md:text-sm">Nubank</span>
-          <span className="text-muted-foreground text-[10px] md:text-xs">×</span>
+          <span className="text-muted-foreground text-[10px] md:text-xs mx-1">×</span>
           <span className="font-sora font-bold text-xs md:text-sm">
             <span className="text-foreground">eureca</span>
             <span className="text-accent">.</span>

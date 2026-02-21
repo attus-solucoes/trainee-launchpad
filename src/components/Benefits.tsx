@@ -43,7 +43,13 @@ const Benefits = () => {
   }, []);
 
   return (
-    <section id="beneficios" className="py-16 md:py-24 lg:py-32" ref={ref} aria-labelledby="beneficios-heading">
+    <section id="beneficios" className="py-16 md:py-24 lg:py-32 relative" ref={ref} aria-labelledby="beneficios-heading">
+      {/* Decorative green glow */}
+      <div
+        className="absolute -left-[50px] md:-left-[80px] bottom-0 w-[150px] h-[150px] md:w-[300px] md:h-[300px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, hsla(153, 100%, 50%, 0.04), transparent 70%)", filter: "blur(60px)" }}
+        aria-hidden="true"
+      />
       <div className="container mx-auto px-5 lg:px-8">
         <h2
           id="beneficios-heading"
