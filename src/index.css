@@ -112,10 +112,17 @@ h1, h2, h3, h4, h5, h6 {
 
   .mesh-gradient {
     background: 
-      radial-gradient(ellipse 80% 60% at 50% 40%, hsla(272, 89%, 43%, 0.35) 0%, transparent 70%),
-      radial-gradient(ellipse 60% 50% at 20% 60%, hsla(272, 89%, 30%, 0.25) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 40% at 80% 30%, hsla(153, 100%, 50%, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse 90% 70% at 50% 40%, hsla(272, 89%, 43%, 0.45) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 50% at 20% 60%, hsla(272, 89%, 30%, 0.3) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 80% 30%, hsla(153, 100%, 50%, 0.08) 0%, transparent 50%),
       hsl(var(--background));
+  }
+
+  .section-divider {
+    width: 60%;
+    height: 1px;
+    margin: 0 auto;
+    background: linear-gradient(90deg, transparent, hsla(272, 89%, 43%, 0.4), transparent);
   }
 }
 
