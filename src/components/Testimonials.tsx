@@ -39,6 +39,7 @@ const testimonials = [
 const Testimonials = () => {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [fade, setFade] = useState(true);
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval>>();
@@ -54,8 +55,16 @@ const Testimonials = () => {
     return () => obs.disconnect();
   }, []);
 
-  const next = useCallback(() => setActive((p) => (p + 1) % testimonials.length), []);
-  const prev = useCallback(() => setActive((p) => (p - 1 + testimonials.length) % testimonials.length), []);
+  const changeTo = useCallback((idx: number) => {
+    setFade(false);
+    setTimeout(() => {
+      setActive(idx);
+      setFade(true);
+    }, 150);
+  }, []);
+
+  const next = useCallback(() => changeTo((active + 1) % testimonials.length), [active, changeTo]);
+  const prev = useCallback(() => changeTo((active - 1 + testimonials.length) % testimonials.length), [active, changeTo]);
 
   useEffect(() => {
     if (paused) return;
@@ -86,20 +95,14 @@ const Testimonials = () => {
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
-          {/* Card */}
-          <div className="glass-card rounded-2xl p-8 md:p-10 relative min-h-[320px] flex flex-col justify-between">
-            {/* Decorative quote */}
-            <span className="absolute top-4 left-6 font-sora text-[5rem] leading-none text-accent/15 select-none pointer-events-none">
-              "
-            </span>
+          <div className={`glass-card rounded-2xl p-8 md:p-10 relative min-h-[320px] flex flex-col justify-between transition-opacity duration-300 ${fade ? "opacity-100" : "opacity-0"}`}>
+            <span className="absolute top-4 left-6 font-sora text-[5rem] leading-none text-accent/15 select-none pointer-events-none">"</span>
 
             <div className="relative z-10">
               <p className="font-dm text-lg md:text-xl text-foreground leading-relaxed italic mb-6 pt-8">
                 "{t.quote}"
               </p>
-
               <div className="w-full h-px bg-accent/20 mb-6" />
-
               <div className="flex items-center gap-4">
                 <div className="w-14 h-14 rounded-full flex items-center justify-center font-sora font-bold text-primary-foreground text-lg flex-shrink-0"
                   style={{ background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)))" }}
@@ -115,28 +118,18 @@ const Testimonials = () => {
             </div>
           </div>
 
-          {/* Arrows */}
-          <button
-            onClick={prev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 md:-translate-x-full md:-left-4 w-12 h-12 rounded-full glass-card flex items-center justify-center text-foreground hover:shadow-[0_0_15px_hsla(153,100%,50%,0.3)] transition-shadow"
-            aria-label="Depoimento anterior"
-          >
+          <button onClick={prev} className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 md:-translate-x-full md:-left-4 w-12 h-12 rounded-full glass-card flex items-center justify-center text-foreground hover:shadow-[0_0_15px_hsla(153,100%,50%,0.3)] transition-shadow" aria-label="Depoimento anterior">
             <ChevronLeft size={20} />
           </button>
-          <button
-            onClick={next}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 md:translate-x-full md:-right-4 w-12 h-12 rounded-full glass-card flex items-center justify-center text-foreground hover:shadow-[0_0_15px_hsla(153,100%,50%,0.3)] transition-shadow"
-            aria-label="Próximo depoimento"
-          >
+          <button onClick={next} className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 md:translate-x-full md:-right-4 w-12 h-12 rounded-full glass-card flex items-center justify-center text-foreground hover:shadow-[0_0_15px_hsla(153,100%,50%,0.3)] transition-shadow" aria-label="Próximo depoimento">
             <ChevronRight size={20} />
           </button>
 
-          {/* Dots */}
           <div className="flex items-center justify-center gap-2 mt-8">
             {testimonials.map((_, i) => (
               <button
                 key={i}
-                onClick={() => setActive(i)}
+                onClick={() => changeTo(i)}
                 className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${i === active ? "bg-accent w-6" : "bg-muted-foreground/30"}`}
                 aria-label={`Depoimento ${i + 1}`}
               />

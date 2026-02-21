@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { Shuffle, Users, Rocket } from "lucide-react";
 
 const cards = [
@@ -19,9 +19,26 @@ const cards = [
   },
 ];
 
+function useTilt() {
+  const onMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    const rect = el.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    el.style.transform = `perspective(600px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-4px)`;
+  }, []);
+
+  const onMouseLeave = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    e.currentTarget.style.transform = "";
+  }, []);
+
+  return { onMouseMove, onMouseLeave };
+}
+
 const AboutProgram = () => {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
+  const tilt = useTilt();
 
   useEffect(() => {
     const el = ref.current;
@@ -54,10 +71,12 @@ const AboutProgram = () => {
           {cards.map((card, i) => (
             <div
               key={card.title}
-              className={`glass-card rounded-2xl p-8 flex flex-col items-start gap-4 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_0_30px_hsla(272,89%,43%,0.15)] transition-all duration-300 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-              style={{ transitionDelay: `${150 + i * 100}ms` }}
+              className={`glass-card rounded-2xl p-8 flex flex-col items-start gap-4 hover:border-primary/40 hover:shadow-[0_0_30px_hsla(272,89%,43%,0.15)] transition-all duration-300 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              style={{ transitionDelay: `${150 + i * 100}ms`, willChange: "transform" }}
+              onMouseMove={tilt.onMouseMove}
+              onMouseLeave={tilt.onMouseLeave}
             >
-              <div className="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center text-accent">
+              <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent">
                 {card.icon}
               </div>
               <h3 className="font-sora text-xl font-semibold text-foreground">{card.title}</h3>

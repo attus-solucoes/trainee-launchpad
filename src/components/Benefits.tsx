@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { DollarSign, Coffee, Heart, BookOpen, Home, Dumbbell } from "lucide-react";
 
 const benefits = [
@@ -10,9 +10,26 @@ const benefits = [
   { icon: <Dumbbell size={26} />, title: "Gympass / Wellhub", desc: "Acesso a academias e apps de bem-estar" },
 ];
 
+function useTilt() {
+  const onMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    const rect = el.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    el.style.transform = `perspective(600px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-4px)`;
+  }, []);
+
+  const onMouseLeave = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    e.currentTarget.style.transform = "";
+  }, []);
+
+  return { onMouseMove, onMouseLeave };
+}
+
 const Benefits = () => {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
+  const tilt = useTilt();
 
   useEffect(() => {
     const el = ref.current;
@@ -38,8 +55,10 @@ const Benefits = () => {
           {benefits.map((b, i) => (
             <div
               key={b.title}
-              className={`glass-card rounded-2xl p-7 flex flex-col items-start gap-4 group hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_0_30px_hsla(272,89%,43%,0.15)] transition-all duration-300 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-              style={{ transitionDelay: `${100 + i * 80}ms` }}
+              className={`glass-card rounded-2xl p-7 flex flex-col items-start gap-4 group hover:border-primary/40 hover:shadow-[0_0_30px_hsla(272,89%,43%,0.15)] transition-all duration-300 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              style={{ transitionDelay: `${100 + i * 80}ms`, willChange: "transform" }}
+              onMouseMove={tilt.onMouseMove}
+              onMouseLeave={tilt.onMouseLeave}
             >
               <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent group-hover:scale-110 group-hover:drop-shadow-[0_0_12px_hsla(153,100%,50%,0.4)] transition-all duration-300">
                 {b.icon}
